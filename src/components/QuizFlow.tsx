@@ -15,7 +15,7 @@ export type UserData = {
   phone: string;
   hairType?: string;
   hairDescription?: string;
-  concerns?: string[];
+  concern?: string;
   goal?: string;
   ageGroup?: string;
 };
@@ -50,8 +50,8 @@ const QuizFlow: React.FC = () => {
       updateUserData({ hairDescription: desc });
       nextStep();
     }} />,
-    <HairConcerns key="concerns" onSelect={(concerns) => {
-      updateUserData({ concerns });
+    <HairConcerns key="concerns" onSelect={(conc) => {
+      updateUserData({ concern: conc });
       nextStep();
     }} />,
     <HairGoals key="goals" onSelect={(goal) => {
