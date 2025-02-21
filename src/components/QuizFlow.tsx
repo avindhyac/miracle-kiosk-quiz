@@ -11,7 +11,9 @@ import AgeGroup from './quiz/AgeGroup';
 import LoadingScreen from './quiz/LoadingScreen';
 import HairSolutions from './quiz/HairSolutions.tsx'; // Import the new final step
 
-const SERVER_DOMAIN = "http://localhost:3000";
+// const SERVER_DOMAIN = "http://localhost:3000";
+const SERVER_DOMAIN = "https://miracle-kiosk-server.onrender.com"
+
 
 export type UserData = {
   name: string;
