@@ -40,6 +40,12 @@ const HairSolutions: React.FC<HairSolutionsProps> = ({ userData }) => {
       { image: '/src/public/hair-mask.jpg', title: 'Miracle Hair Treatment Mask', description: 'Deeply nourishes the hair and scalp.' },
       { image: '/src/public/frizz-serum.jpg', title: 'Anti-Frizz Gloss Serum', description: 'Eliminates frizz and enhances shine.' },
     ],
+    'Oily': [
+      { image: '/src/public/hair-fall-oily-weak/hairfall-shampoo.jpg', title: 'Miracle Hydro Boost Shampoo', description: 'Stimulates hair follicles and improves scalp health.' },
+      { image: '/src/public/hair-fall-oily-weak/hairfall-conditioner.jpg', title: 'Miracle Hydro Boost Conditioner', description: 'Strengthens hair and reduces shedding.' },
+      { image: '/src/public/hair-mask.jpg', title: 'Miracle Hair Treatment Mask', description: 'Promotes scalp circulation and nourishes hair follicles.' },
+      { image: '/src/public/frizz-serum.jpg', title: 'Anti-Frizz Gloss Serum', description: 'Enhances shine and eliminates frizz.' },
+    ],
   };
 
   // Get recommendations based on user's concern
@@ -63,6 +69,12 @@ const HairSolutions: React.FC<HairSolutionsProps> = ({ userData }) => {
       <div className="mt-20 w-full max-w-2xl p-6 bg-primary text-white rounded-2xl shadow-lg text-center">
         <h3 className="text-2xl font-bold">Grab your new haircare essentials now and enjoy an exclusive discount at checkout.</h3>
       </div>
+      <button 
+        className="mt-10 px-10 py-4 text-2xl text-bold bg-white text-primary rounded-xl shadow-md hover:bg-primary/80 hover:text-white transition" 
+        onClick={() => window.location.reload()}
+      >
+        Return home
+      </button>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios'
 import { motion, AnimatePresence } from 'framer-motion';
 import UserForm from './quiz/UserForm';
 import Greeting from './quiz/Greeting';
@@ -9,6 +10,8 @@ import HairGoals from './quiz/HairGoals';
 import AgeGroup from './quiz/AgeGroup';
 import LoadingScreen from './quiz/LoadingScreen';
 import HairSolutions from './quiz/HairSolutions.tsx'; // Import the new final step
+
+const SERVER_DOMAIN = "http://localhost:3000";
 
 export type UserData = {
   name: string;
@@ -39,20 +42,24 @@ const QuizFlow: React.FC = () => {
   };
 
   useEffect(() => {
-    if (step === 7) {
-      // Simulate API call submission when reaching the LoadingScreen step
+    if (step === 7 && !isSubmitted) {  // Prevent multiple submissions
       const submitData = async () => {
-        console.log('Submitting user data:', userData);
-
-        // Simulated API delay
-        await new Promise(resolve => setTimeout(resolve, 2000));
-
-        setIsSubmitted(true);
+        try {
+          console.log("Submitting user data:", userData);
+          await axios.post(`${SERVER_DOMAIN}/submit`, userData, {
+            headers: { "Content-Type": "application/json" },
+          });
+          setIsSubmitted(true);
+          console.log("User data successfully submitted!");
+        } catch (error) {
+          console.error("Error submitting user data:", error);
+        }
       };
-
+  
       submitData();
     }
-  }, [step, userData]);
+  }, [step, userData, isSubmitted]);
+  
 
   const components = [
     <UserForm key="form" userData={userData} onSubmit={(data) => {

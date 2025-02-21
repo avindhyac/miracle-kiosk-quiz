@@ -1,8 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { UserData } from '../QuizFlow';
-
-const SERVER_DOMAIN = 'http://localhost:3000'
 
 interface UserFormProps {
   userData: UserData;
@@ -15,7 +12,6 @@ const UserForm: React.FC<UserFormProps> = ({ userData, onSubmit }) => {
   const [email, setEmail] = useState(userData.email);
   const [errors, setErrors] = useState<{ contact?: string }>({});
   const [isValid, setIsValid] = useState(false);
-  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const validateForm = () => {
@@ -38,25 +34,14 @@ const UserForm: React.FC<UserFormProps> = ({ userData, onSubmit }) => {
     validateForm();
   }, [email, phone, name]);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (isValid) {
-      setLoading(true);
       const formData = { name, phone, email };
-      try {
-        await axios.post(`${SERVER_DOMAIN}/submit`, formData, {
-          headers: {
-            "Content-Type": "application/json"
-          }
-        });
-        console.log(`Success! ${name}'s form has been submitted to the database`);
-      } catch (error) {
-        console.error("Error submitting form", error);
-      }
-      setLoading(false);
-      onSubmit(formData);
+      onSubmit(formData); // Pass data up, don't submit yet
     }
   };
+  
   
   return (
     <div className="h-full flex flex-col items-center justify-center p-8">
@@ -105,16 +90,11 @@ const UserForm: React.FC<UserFormProps> = ({ userData, onSubmit }) => {
           {errors.contact && <div className="text-red-500 text-lg mt-2">{errors.contact}</div>}
           <button
             type="submit"
-            disabled={!isValid || loading}
+            disabled={!isValid}
             className="w-full bg-primary text-white text-2xl py-4 rounded-xl hover:bg-primary/90 transition-colors mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             Continue
           </button>
-          {loading && (
-            <div className="flex justify-center mt-4">
-              <div className="w-6 h-6 border-4 border-gray-300 border-t-primary rounded-full animate-spin"></div>
-            </div>
-          )}
         </form>
       </div>
     </div>

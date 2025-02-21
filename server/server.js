@@ -7,7 +7,7 @@ app.use(express.json());
 app.use(cors());
 
 const PORT = 3000;
-const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbxFWQFuDZfNBLlgxJAMvK56Q1r5_y6EAG60fRPIgJc7JFI84izjxbscOWoWvvavTT9S/exec"; // Replace with your actual Google Sheets Web App URL
+const GOOGLE_SHEETS_URL = "https://script.google.com/macros/s/AKfycbzl0YOxRLXtHQ8208r-Mez0sk4ruxWGCpSvuz0ISTAgYzFLLBYU_TI6As7HaDOZn6fL/exec"; // Replace with your actual Google Sheets Web App URL
 
 app.post("/submit", async (req, res) => {
   try {
