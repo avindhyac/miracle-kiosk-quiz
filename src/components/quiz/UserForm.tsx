@@ -3,16 +3,17 @@ import { UserData } from '../QuizFlow';
 
 interface UserFormProps {
   userData: UserData;
-  onSubmit: (data: Pick<UserData, 'name' | 'phone'>) => void;
+  onSubmit: (data: Pick<UserData, 'name' | 'phone' | 'email'>) => void;
 }
 
 const UserForm: React.FC<UserFormProps> = ({ userData, onSubmit }) => {
   const [name, setName] = useState(userData.name);
   const [phone, setPhone] = useState(userData.phone);
+  const [email, setEmail] = useState(userData.email)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ name, phone });
+    onSubmit({ name, phone, email });
   };
 
   return (
@@ -38,6 +39,20 @@ const UserForm: React.FC<UserFormProps> = ({ userData, onSubmit }) => {
           </div>
 
           <div>
+            <label htmlFor="email" className="block text-2xl text-primary/70 mb-2">
+              Email
+            </label>
+            <input
+              type="text"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full px-6 py-4 text-2xl border-2 border-primary-light rounded-xl focus:border-primary focus:ring-2 focus:ring-primary-light outline-none transition-all"
+              required
+            />
+          </div>
+
+          <div>
             <label htmlFor="phone" className="block text-2xl text-primary/70 mb-2">
               Phone Number
             </label>
@@ -46,10 +61,12 @@ const UserForm: React.FC<UserFormProps> = ({ userData, onSubmit }) => {
               id="phone"
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
-              className="w-full px-6 py-4 text-2xl border-2 border-primary-light rounded-xl focus:border-primary focus:ring-2 focus:ring-primary-light outline-none transition-all"
+              className="w-full px-6 py-4 text-2xl border-2 border-primary-light rounded-xl focus:border-primary focus:ring-2 focus:ring-primary-light outline-none transition-all mb-10"
               required
             />
           </div>
+
+          
 
           <button
             type="submit"

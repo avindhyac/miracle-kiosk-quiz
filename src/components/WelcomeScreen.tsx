@@ -8,7 +8,13 @@ interface WelcomeScreenProps {
 const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onSelect }) => {
   return (
     <div className="h-full flex flex-col items-center justify-center p-8 space-y-12">
+      {/* <div className="absolute w-80 top-10 opacity-80">
+      <img src="/src/public/miracle-logo.jpg" alt="miracle logo"/>
+      </div> */}
       <div className="text-center">
+        <div className="flex justify-center top-10 opacity-80 w-full">
+          <img src="/src/public/miracle-logo.jpg" alt="miracle logo" className="w-64"/>
+        </div>
         <h1 className="text-5xl font-bold text-primary mb-4">
           Transform Your Hair Journey
         </h1>
@@ -47,11 +53,11 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onSelect }) => {
         </button>
       </div>
 
-      <img
+      {/* <img
         src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80"
         alt="Haircare"
         className="absolute bottom-0 left-0 w-full h-1/3 object-cover opacity-10 pointer-events-none"
-      />
+      /> */}
     </div>
   );
 };

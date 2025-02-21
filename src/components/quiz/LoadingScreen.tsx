@@ -14,7 +14,7 @@ const LoadingScreen: React.FC = () => {
 
   return (
     <div className="h-full flex flex-col items-center justify-center p-8 bg-gradient-to-b from-background-light to-primary-light/20">
-      <h2 className="text-4xl font-bold text-primary mb-8 text-center">
+      <h2 className="text-4xl font-bold text-primary mb-16 text-center">
         Building your perfect haircare routine{dots}
       </h2>
 
@@ -37,7 +37,7 @@ const LoadingScreen: React.FC = () => {
       </div>
 
       <motion.div
-        className="mt-12 text-2xl text-primary"
+        className="mt-16 text-2xl text-primary"
         animate={{ opacity: [0.5, 1, 0.5] }}
         transition={{ duration: 2, repeat: Infinity }}
       >

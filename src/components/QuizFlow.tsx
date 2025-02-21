@@ -11,6 +11,7 @@ import LoadingScreen from './quiz/LoadingScreen';
 
 export type UserData = {
   name: string;
+  email: string;
   phone: string;
   hairType?: string;
   hairDescription?: string;
@@ -23,6 +24,7 @@ const QuizFlow: React.FC = () => {
   const [step, setStep] = useState(0);
   const [userData, setUserData] = useState<UserData>({
     name: '',
+    email: '',
     phone: '',
   });
 
