@@ -1,8 +1,6 @@
-import React, { useEffect, useState, useRef } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import axios from "axios";
 
-const SERVER_DOMAIN = "http://localhost:3000";
 
 interface LoadingScreenProps {
   userData: {
