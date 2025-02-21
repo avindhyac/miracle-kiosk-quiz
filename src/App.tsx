@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import QuizFlow from './components/QuizFlow';
 import WelcomeScreen from './components/WelcomeScreen';
 
