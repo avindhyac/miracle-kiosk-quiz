@@ -13,7 +13,7 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onSelect }) => {
       </div> */}
       <div className="text-center">
         <div className="flex justify-center top-10 opacity-80 w-full">
-          <img src="/src/public/miracle-logo.jpg" alt="miracle logo" className="w-64"/>
+          <img src="/miracle-logo.jpg" alt="miracle logo" className="w-64"/>
         </div>
         <h1 className="text-5xl font-bold text-primary mb-4">
           Transform Your Hair Journey
