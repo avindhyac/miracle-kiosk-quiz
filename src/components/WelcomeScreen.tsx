@@ -52,12 +52,6 @@ const WelcomeScreen: React.FC<WelcomeScreenProps> = ({ onSelect }) => {
           </div>
         </button>
       </div>
-
-      {/* <img
-        src="https://images.unsplash.com/photo-1522337660859-02fbefca4702?auto=format&fit=crop&w=800&q=80"
-        alt="Haircare"
-        className="absolute bottom-0 left-0 w-full h-1/3 object-cover opacity-10 pointer-events-none"
-      /> */}
     </div>
   );
 };

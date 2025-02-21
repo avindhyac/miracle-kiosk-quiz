@@ -1,16 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 
-const LoadingScreen: React.FC = () => {
+interface LoadingScreenProps {
+  userData: {
+    name: string;
+    email: string;
+    phone: string;
+    hairType?: string;
+    hairDescription?: string;
+    concern?: string;
+    goal?: string;
+    ageGroup?: string;
+  };
+}
+
+const LoadingScreen: React.FC<LoadingScreenProps> = ({ userData }) => {
   const [dots, setDots] = useState('');
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setDots(prev => prev.length >= 3 ? '' : prev + '.');
+      setDots(prev => (prev.length >= 3 ? '' : prev + '.'));
     }, 1000);
 
+    console.log('Final User Data:', userData); // Now userData is accessible here
+
     return () => clearInterval(interval);
-  }, []);
+  }, [userData]);
 
   return (
     <div className="h-full flex flex-col items-center justify-center p-8 bg-gradient-to-b from-background-light to-primary-light/20">
@@ -47,4 +62,4 @@ const LoadingScreen: React.FC = () => {
   );
 };
 
-export default LoadingScreen
+export default LoadingScreen;

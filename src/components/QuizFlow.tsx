@@ -62,8 +62,9 @@ const QuizFlow: React.FC = () => {
       updateUserData({ ageGroup: age });
       nextStep();
     }} />,
-    <LoadingScreen key="loading" />,
+    <LoadingScreen key="loading" userData={userData} />,
   ];
+  
 
   return (
     <div className="h-full w-full overflow-hidden">
