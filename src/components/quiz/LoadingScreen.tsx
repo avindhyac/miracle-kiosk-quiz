@@ -16,16 +16,34 @@ interface LoadingScreenProps {
 
 const LoadingScreen: React.FC<LoadingScreenProps> = ({ userData }) => {
   const [dots, setDots] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     const interval = setInterval(() => {
       setDots(prev => (prev.length >= 3 ? '' : prev + '.'));
     }, 1000);
 
-    console.log('Final User Data:', userData); // Now userData is accessible here
+    // Simulate API submission when the loading screen starts
+    const submitData = async () => {
+      try {
+        console.log('Submitting final user data:', userData);
+        
+        // Simulated API call (replace with real API request)
+        await new Promise(resolve => setTimeout(resolve, 2000)); 
+
+        setIsSubmitted(true);
+        console.log('User data successfully submitted!');
+      } catch (error) {
+        console.error('Error submitting user data:', error);
+      }
+    };
+
+    if (!isSubmitted) {
+      submitData();
+    }
 
     return () => clearInterval(interval);
-  }, [userData]);
+  }, [userData, isSubmitted]);
 
   return (
     <div className="h-full flex flex-col items-center justify-center p-8 bg-gradient-to-b from-background-light to-primary-light/20">

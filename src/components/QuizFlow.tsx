@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import UserForm from './quiz/UserForm';
 import Greeting from './quiz/Greeting';
@@ -8,6 +8,7 @@ import HairConcerns from './quiz/HairConcerns';
 import HairGoals from './quiz/HairGoals';
 import AgeGroup from './quiz/AgeGroup';
 import LoadingScreen from './quiz/LoadingScreen';
+import HairSolutions from './quiz/HairSolutions.tsx'; // Import the new final step
 
 export type UserData = {
   name: string;
@@ -27,6 +28,7 @@ const QuizFlow: React.FC = () => {
     email: '',
     phone: '',
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const updateUserData = (data: Partial<UserData>) => {
     setUserData(prev => ({ ...prev, ...data }));
@@ -35,6 +37,22 @@ const QuizFlow: React.FC = () => {
   const nextStep = () => {
     setStep(prev => prev + 1);
   };
+
+  useEffect(() => {
+    if (step === 7) {
+      // Simulate API call submission when reaching the LoadingScreen step
+      const submitData = async () => {
+        console.log('Submitting user data:', userData);
+
+        // Simulated API delay
+        await new Promise(resolve => setTimeout(resolve, 2000));
+
+        setIsSubmitted(true);
+      };
+
+      submitData();
+    }
+  }, [step, userData]);
 
   const components = [
     <UserForm key="form" userData={userData} onSubmit={(data) => {
@@ -64,7 +82,11 @@ const QuizFlow: React.FC = () => {
     }} />,
     <LoadingScreen key="loading" userData={userData} />,
   ];
-  
+
+  // Once submission is complete, transition to HairSolutions
+  if (isSubmitted) {
+    return <HairSolutions userData={userData} />;
+  }
 
   return (
     <div className="h-full w-full overflow-hidden">
