@@ -2,14 +2,14 @@ import { useState, useEffect } from 'react';
 import QuizFlow from './components/QuizFlow';
 import WelcomeScreen from './components/WelcomeScreen';
 
-const GAME_URL = ''
+const GAME_URL = import.meta.env.VITE_GAME_URL
 
 function App() {
   const [selectedOption, setSelectedOption] = useState<'quiz' | 'game' | null>(null);
 
   useEffect(() => {
     if (selectedOption === 'game') {
-      window.location.href = `${GAME_URL}`; // Replace with your actual game URL
+      window.location.href = GAME_URL
     }
   }, [selectedOption]);
 
